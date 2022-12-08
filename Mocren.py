@@ -42,7 +42,7 @@ def main():
     parser.parse_args()
 
     print('=' * terminal_columns)
-    print('***** Mocren *****')
+    print('----- Mocren: Monitor Cross-site and Report Errors via Network ----')
     print('=' * terminal_columns)
 
     # まだ JSON がなければ初期値を設定
@@ -60,14 +60,12 @@ def main():
     # 前回の更新時刻
     print(f'Last Updated Time : {save_data["LastUpdatedAt"]}')
     print(f'Current Time      : {datetime.datetime.now().strftime("%Y/%m/%d %H:%M:%S")}')
-    print('-' * terminal_columns)
 
     for test_site in test_sites:
 
         # ---------- テスト開始 ----------
 
-        # テストが成功したときのみ True にする
-        save_data[test_site['name']] = False
+        print('-' * terminal_columns)
 
         # テスト対象のサイトにリクエスト
         ## リダイレクトはフォローしない
@@ -80,9 +78,10 @@ def main():
 
             # 前回のテストが正常だった場合のみ通知
             if save_data[test_site['name']] is True:
-                SendDiscord(f'{test_site["name"]} ({test_site["url"]}) で ⚠**Timeout Error**⚠ が発生しています。')
+                SendDiscord(f'**{test_site["name"]}** で ⚠**Timeout Error**⚠ が発生しています。\n(URL: {test_site["url"]})')
 
             print(f'{test_site["name"]}: Timeout Error')
+            save_data[test_site['name']] = False
             continue
 
         # 接続がエラーになった
@@ -90,9 +89,10 @@ def main():
 
             # 前回のテストが正常だった場合のみ通知
             if save_data[test_site['name']] is True:
-                SendDiscord(f'{test_site["name"]} ({test_site["url"]}) で ⚠**Connection Error**⚠ が発生しています。')
+                SendDiscord(f'**{test_site["name"]}** で ⚠**Connection Error**⚠ が発生しています。\n(URL: {test_site["url"]})')
 
             print(f'{test_site["name"]}: Connection Error')
+            save_data[test_site['name']] = False
             continue
 
         # テスト対象のサイトのステータスコードが正常時と一致しない
@@ -100,9 +100,10 @@ def main():
 
             # 前回のテストが正常だった場合のみ通知
             if save_data[test_site['name']] is True:
-                SendDiscord(f'{test_site["name"]} ({test_site["url"]}) で ⚠**HTTP Error {response.status_code}**⚠ が発生しています。')
+                SendDiscord(f'**{test_site["name"]}** で ⚠**HTTP Error {response.status_code}**⚠ が発生しています。\n(URL: {test_site["url"]})')
 
-            print(f'{test_site["name"]}: HTTP Error {response.status_code} ({test_site["normal_status_code"]} was expected)')
+            print(f'{test_site["name"]}: HTTP Error {response.status_code} (HTTP Status {test_site["normal_status_code"]} was expected)')
+            save_data[test_site['name']] = False
             continue
 
         # テスト対象のサイトのレスポンスが正常時のレスポンスデータの一部と一致しない
@@ -110,24 +111,25 @@ def main():
 
             # 前回のテストが正常だった場合のみ通知
             if save_data[test_site['name']] is True:
-                SendDiscord(f'{test_site["name"]} ({test_site["url"]}) で ⚠**Response Data Error**⚠ が発生しています。')
+                SendDiscord(f'**{test_site["name"]}** で ⚠**Response Data Error**⚠ が発生しています。\n(URL: {test_site["url"]})')
 
-            print(f'{test_site["name"]}: Response Data Error (HTTP status code: {response.status_code}))')
+            print(f'{test_site["name"]}: Response Data Error (HTTP Status {response.status_code}))')
+            save_data[test_site['name']] = False
             continue
 
         # ---------- テスト終了 ----------
 
         # ここまでのテストに通過していれば、成功している
-        save_data[test_site['name']] = True
-
-        # 前回のテストが失敗だった場合のみ通知
+        ## 前回のテストが失敗だった場合のみ通知
         if save_data[test_site['name']] is False:
-            SendDiscord(f'{test_site["name"]} ({test_site["url"]}) が復旧しました。')
+            SendDiscord(f'**{test_site["name"]} **が 🎉**復旧**🎊 しました！\n(URL: {test_site["url"]})')
 
-        print(f'{test_site["name"]}: Success (HTTP status code: {response.status_code})')
-        print('-' * terminal_columns)
+        save_data[test_site['name']] = True
+        print(f'{test_site["name"]}: Success (HTTP Status {response.status_code})')
 
     # ---------- 後処理 ----------
+
+    print('-' * terminal_columns)
 
     # 前回の更新時刻を更新
     save_data['LastUpdatedAt'] = datetime.datetime.now().strftime('%Y/%m/%d %H:%M:%S')

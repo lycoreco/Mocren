@@ -3,7 +3,7 @@ from typing import TypedDict
 
 # テスト対象のサイトの型定義
 class TestSite(TypedDict):
-    name: str  # サイト名
+    name: str  # サイト名 (JSON に保存するときの ID でもあるので、一意にすること)
     url: str  # テスト対象の URL
     normal_status_code: int  # 正常時のステータスコード
     normal_response_data: str  # 正常時のレスポンスの中に含まれる文字列

@@ -3,6 +3,9 @@
 
 📢 **Mocren**: **Mo**nitor **C**ross-site and **R**eport **E**rrors via **N**etwork.
 
+> 個人的に運営している各サイトの死活監視ツール。  
+> もしほかで使う場合は、適宜テスト対象のサイトの定義を変更すること。
+
 ## 導入
 
 事前に Python 3.10 / pip / Git がインストールされていることが前提。
@@ -25,7 +28,8 @@ ID は Discord の設定から開発者モードを有効化し、自分のユ�
 `WEBHOOK_URL` には Discord の Webhook URL を設定する。  
 Discord の Webhook URL は別途取得すること。`https://discord.com/api/webhooks/～` のような URL になる。
 
-`MocrecTestSites.py` には正常に稼働しているかテストする各サイトの定義を記述している。
+`MocrecTestSites.py` には、正常に稼働しているかテストする、各サイトの定義を記述する。  
+詳細は型定義を参照のこと。
 
 ## 実行
 
