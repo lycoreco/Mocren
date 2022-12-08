@@ -83,6 +83,30 @@ test_sites: list[TestSite] = [
         'normal_response_data': '<channels status="ok">',
     },
     {
+        'name': 'TVTest オンラインヘルプ',
+        'url': 'https://docs.tsukumijima.net/TVTest/',
+        'normal_status_code': 200,
+        'normal_response_data': '<title>TVTest (デジタル放送汎用視聴プログラム実装研究資料) ヘルプ - TVTest ヘルプ</title>',
+    },
+    {
+        'name': 'site.tsukumijima.net',
+        'url': 'https://site.tsukumijima.net/robots.txt',
+        'normal_status_code': 200,
+        'normal_response_data': 'Disallow: /',
+    },
+    {
+        'name': 'KonomiTV API',
+        'url': 'https://app.konomi.tv/api/',
+        'normal_status_code': 404,
+        'normal_response_data': '{"detail":"Not Found"}',
+    },
+    {
+        'name': 'Akebi Keyless Server',
+        'url': 'https://akebi.konomi.tv/',
+        'normal_status_code': 404,
+        'normal_response_data': '<center>Akebi Keyless Server (<a href="https://github.com/tsukumijima/Akebi" target="blank">https://github.com/tsukumijima/Akebi</a>)</center>',
+    },
+    {
         'name': 'shamimomo.net',
         'url': 'https://shamimomo.net/',
         'normal_status_code': 200,
@@ -91,6 +115,18 @@ test_sites: list[TestSite] = [
     {
         'name': 'shamimomo.net - アクセスカウンター',
         'url': 'https://shamimomo.net/dream/admin.cgi',
+        'normal_status_code': 200,
+        'normal_response_data': '<form action="./admin.cgi" method="post">',
+    },
+    {
+        'name': 'YouTubeMP3もどき',
+        'url': 'https://receive.shamimomo.net/YouTubeMP3modoki/',
+        'normal_status_code': 200,
+        'normal_response_data': '<title>YouTubeMP3もどき</title>',
+    },
+    {
+        'name': 'YouTubeMP3もどき - アクセスカウンター',
+        'url': 'https://receive.shamimomo.net/dream/admin.cgi',
         'normal_status_code': 200,
         'normal_response_data': '<form action="./admin.cgi" method="post">',
     },
