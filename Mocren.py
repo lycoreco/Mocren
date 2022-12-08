@@ -72,6 +72,7 @@ def main():
         ## タイムアウトは 10 秒
         try:
             response = requests.get(test_site['url'], headers={'User-Agent': f'Mocren/{VERSION}'}, allow_redirects=False, timeout=10)
+            response.encoding = response.apparent_encoding  # 文字コードを自動判別
 
         # 接続がタイムアウトになった
         except requests.exceptions.Timeout:
