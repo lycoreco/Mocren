@@ -34,10 +34,10 @@ Discord の Webhook URL は別途取得すること。`https://discord.com/api/w
 ## 実行
 
 Mocren は常時起動機能を持たない。継続的に実行させたい場合は、Cron やタスクスケジューラなどに Mocren を登録する必要がある。  
-以下に Cron で10分おきに Mocren を実行させる例を示す。
+以下に Cron で5分おきに Mocren を実行させる例を示す (`ubuntu` は一般ユーザー)。
 
 ```
-*/10 * * * * /usr/local/bin/pipenv run python3.10 /home/ubuntu/Mocren/Mocren.py
+*/5 * * * * /home/ubuntu/Mocren/.venv/bin/python /home/ubuntu/Mocren/Mocren.py
 ```
 
 ## License
