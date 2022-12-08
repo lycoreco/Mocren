@@ -71,7 +71,7 @@ def main():
         ## リダイレクトはフォローしない
         ## タイムアウトは 10 秒
         try:
-            response = requests.get(test_site['url'], allow_redirects=False, timeout=10)
+            response = requests.get(test_site['url'], headers={'User-Agent': f'Mocren/{VERSION}'}, allow_redirects=False, timeout=10)
 
         # 接続がタイムアウトになった
         except requests.exceptions.Timeout:
