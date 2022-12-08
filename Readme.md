@@ -8,13 +8,13 @@
 
 ## 導入
 
-事前に Python 3.10 / pip / Git がインストールされていることが前提。
+事前に Python 3.10 / pip / pipenv / Git がインストールされていることが前提。
 
 ```Shell
-pip3 install requests
 git clone https://github.com/lycoreco/Mocren.git
 cd Mocren/
 cp MocrenConfig.example.py MocrenConfig.py
+PIPENV_VENV_IN_PROJECT="true" pipenv sync
 ```
 
 ## 設定
@@ -34,10 +34,10 @@ Discord の Webhook URL は別途取得すること。`https://discord.com/api/w
 ## 実行
 
 Mocren は常時起動機能を持たない。継続的に実行させたい場合は、Cron やタスクスケジューラなどに Mocren を登録する必要がある。  
-以下に Cron で1分おきに Mocren を実行させる例を示す（`ubuntu` は一般ユーザー）。
+以下に Cron で1分おきに Mocren を実行させる例を示す。
 
 ```
-*/1 * * * * sudo -u ubuntu /usr/bin/python3.10 /home/ubuntu/Mocren/Mocren.py
+*/1 * * * * /usr/local/bin/pipenv run python3.10 /home/ubuntu/Mocren/Mocren.py
 ```
 
 ## License
