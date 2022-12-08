@@ -1,9 +1,7 @@
 
 # Mocren
 
-**Mocren**: **Mo**nitor **C**ross-site and **R**eport **E**rrors via **N**etwork
-
-個人的なサイトの死活監視ツール。
+📢 **Mocren**: **Mo**nitor **C**ross-site and **R**eport **E**rrors via **N**etwork.
 
 ## 導入
 
@@ -26,6 +24,8 @@ ID は Discord の設定から開発者モードを有効化し、自分のユ�
 
 `WEBHOOK_URL` には Discord の Webhook URL を設定する。  
 Discord の Webhook URL は別途取得すること。`https://discord.com/api/webhooks/～` のような URL になる。
+
+`MocrecTestSites.py` には正常に稼働しているかテストする各サイトの定義を記述している。
 
 ## 実行
 
