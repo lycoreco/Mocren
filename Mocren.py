@@ -81,7 +81,7 @@ def main():
             if save_data[test_site['name']] is True:
                 SendDiscord(f'**{test_site["name"]}** で ⚠**Timeout Error**⚠ が発生しています。\n(URL: {test_site["url"]})')
 
-            print(f'{test_site["name"]}: Timeout Error')
+            print(f'{test_site["name"]}: ❌ Timeout Error')
             save_data[test_site['name']] = False
             continue
 
@@ -92,7 +92,7 @@ def main():
             if save_data[test_site['name']] is True:
                 SendDiscord(f'**{test_site["name"]}** で ⚠**Connection Error**⚠ が発生しています。\n(URL: {test_site["url"]})')
 
-            print(f'{test_site["name"]}: Connection Error')
+            print(f'{test_site["name"]}: ❌ Connection Error')
             save_data[test_site['name']] = False
             continue
 
@@ -103,7 +103,7 @@ def main():
             if save_data[test_site['name']] is True:
                 SendDiscord(f'**{test_site["name"]}** で ⚠**HTTP Error {response.status_code}**⚠ が発生しています。\n(URL: {test_site["url"]})')
 
-            print(f'{test_site["name"]}: HTTP Error {response.status_code} (HTTP Status {test_site["normal_status_code"]} was expected)')
+            print(f'{test_site["name"]}: ❌ HTTP Error {response.status_code} (HTTP Status {test_site["normal_status_code"]} was expected)')
             save_data[test_site['name']] = False
             continue
 
@@ -114,7 +114,7 @@ def main():
             if save_data[test_site['name']] is True:
                 SendDiscord(f'**{test_site["name"]}** で ⚠**Response Data Error**⚠ が発生しています。\n(URL: {test_site["url"]})')
 
-            print(f'{test_site["name"]}: Response Data Error (HTTP Status {response.status_code}))')
+            print(f'{test_site["name"]}: ❌ Response Data Error (HTTP Status {response.status_code}))')
             save_data[test_site['name']] = False
             continue
 
@@ -126,7 +126,7 @@ def main():
             SendDiscord(f'**{test_site["name"]} **が 🎉**復旧**🎊 しました！\n(URL: {test_site["url"]})')
 
         save_data[test_site['name']] = True
-        print(f'{test_site["name"]}: Success (HTTP Status {response.status_code})')
+        print(f'{test_site["name"]}: ✅ Success (HTTP Status {response.status_code})')
 
     # ---------- 後処理 ----------
 

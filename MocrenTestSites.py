@@ -125,15 +125,15 @@ test_sites: list[TestSite] = [
         'normal_response_data': '<title>YouTubeMP3もどき</title>',
     },
     {
-        'name': 'YouTubeMP3もどき (Satellite Server)',
-        'url': 'https://receive-satellite.shamimomo.net/YouTubeMP3modoki/',
-        'normal_status_code': 200,
-        'normal_response_data': '<title>YouTubeMP3もどき</title>',
-    },
-    {
         'name': 'YouTubeMP3もどき - アクセスカウンター',
         'url': 'https://receive.shamimomo.net/dream/admin.cgi',
         'normal_status_code': 200,
         'normal_response_data': '<form action="./admin.cgi" method="post">',
+    },
+    {
+        'name': 'YouTubeMP3もどき (Satellite Server)',
+        'url': 'https://receive-satellite.shamimomo.net/YouTubeMP3modoki/',
+        'normal_status_code': 200,
+        'normal_response_data': '<title>YouTubeMP3もどき</title>',
     },
 ]
