@@ -14,7 +14,7 @@ test_sites: list[TestSite] = [
         'name': 'つくみ島だより',
         'url': 'https://blog.tsukumijima.net/',
         'normal_status_code': 200,
-        'normal_response_data': '<title>つくみ島だより | プログラムとかDTVとか諸々</title>',
+        'normal_response_data': '<meta property="og:title" content="つくみ島だより">',
     },
     {
         'name': 'つくみ島道具箱',
