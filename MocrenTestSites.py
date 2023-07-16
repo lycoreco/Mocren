@@ -1,4 +1,5 @@
 
+import time
 from typing import TypedDict
 
 # テスト対象のサイトの型定義
@@ -69,6 +70,18 @@ test_sites: list[TestSite] = [
         'url': 'https://jikkyo.tsukumijima.net/api/kakolog/jk1?starttime=1606431600&endtime=1606432500&format=json',
         'normal_status_code': 200,
         'normal_response_data': '{"chat":{"thread":"1606417201","no":"2750","vpos":"1440040","date":"1606431601","mail":"184","user_id":"mmJyd4lCsV6e3loLXR0QvZnlnFI","premium":"1","anonymity":"1","date_usec":"373180","content":"六甲おろし歌って"}}',
+    },
+    {
+        'name': 'ニコニコ実況 過去ログ API - XML API (Latest)',
+        'url': f'https://jikkyo.tsukumijima.net/api/kakolog/jk211?starttime={time.time() - 3600}&endtime={time.time() - 1800}&format=xml',
+        'normal_status_code': 200,
+        'normal_response_data': '<packet>\n<chat thread="',
+    },
+    {
+        'name': 'ニコニコ実況 過去ログ API - JSON API (Latest)',
+        'url': f'https://jikkyo.tsukumijima.net/api/kakolog/jk211?starttime={time.time() - 3600}&endtime={time.time() - 1800}&format=json',
+        'normal_status_code': 200,
+        'normal_response_data': '{"packet":[{"chat":',
     },
     {
         'name': 'namami',
