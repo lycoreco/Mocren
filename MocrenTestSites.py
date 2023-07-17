@@ -73,15 +73,15 @@ test_sites: list[TestSite] = [
     },
     {
         'name': 'ニコニコ実況 過去ログ API - XML API (Latest)',
-        'url': f'https://jikkyo.tsukumijima.net/api/kakolog/jk211?starttime={time.time() - 3600}&endtime={time.time() - 1800}&format=xml',
+        'url': f'https://jikkyo.tsukumijima.net/api/kakolog/jk211?starttime={int(time.time() - 3600)}&endtime={int(time.time() - 1800)}&format=xml',
         'normal_status_code': 200,
-        'normal_response_data': '<packet>\n<chat thread="',
+        'normal_response_data': '<packet>\n',
     },
     {
         'name': 'ニコニコ実況 過去ログ API - JSON API (Latest)',
-        'url': f'https://jikkyo.tsukumijima.net/api/kakolog/jk211?starttime={time.time() - 3600}&endtime={time.time() - 1800}&format=json',
+        'url': f'https://jikkyo.tsukumijima.net/api/kakolog/jk211?starttime={int(time.time() - 3600)}&endtime={int(time.time() - 1800)}&format=json',
         'normal_status_code': 200,
-        'normal_response_data': '{"packet":[{"chat":',
+        'normal_response_data': '{"packet":[',
     },
     {
         'name': 'namami',
