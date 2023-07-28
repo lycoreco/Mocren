@@ -85,13 +85,13 @@ test_sites: list[TestSite] = [
     },
     {
         'name': 'ニコニコ実況 過去ログ API - XML API (Latest jk141)',
-        'url': f'https://jikkyo.tsukumijima.net/api/kakolog/jk141?starttime={int(time.time() - 68400)}&endtime={int(time.time())}&format=xml',
+        'url': f'https://jikkyo.tsukumijima.net/api/kakolog/jk141?starttime={int(time.time() - 136800)}&endtime={int(time.time())}&format=xml',
         'normal_status_code': 200,
         'normal_response_data': '<packet>\n<chat thread="',
     },
     {
         'name': 'ニコニコ実況 過去ログ API - JSON API (Latest jk141)',
-        'url': f'https://jikkyo.tsukumijima.net/api/kakolog/jk141?starttime={int(time.time() - 68400)}&endtime={int(time.time())}&format=json',
+        'url': f'https://jikkyo.tsukumijima.net/api/kakolog/jk141?starttime={int(time.time() - 136800)}&endtime={int(time.time())}&format=json',
         'normal_status_code': 200,
         'normal_response_data': '{"packet":[{"chat":{"thread":"',
     },
