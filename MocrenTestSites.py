@@ -96,12 +96,6 @@ test_sites: list[TestSite] = [
         'normal_response_data': '{"packet":[{"chat":{"thread":"',
     },
     {
-        'name': 'namami',
-        'url': 'https://jikkyo.tsukumijima.net/namami/',
-        'normal_status_code': 200,
-        'normal_response_data': '<a href="/namami/tv">テレビ</a></li><li><a href="/namami/radio">ラジオ</a></li><li><a href="/namami/bs">BS</a>',
-    },
-    {
         'name': 'NX-Jikkyo',
         'url': 'https://nx-jikkyo.tsukumijima.net/api/v1/channels',
         'normal_status_code': 200,

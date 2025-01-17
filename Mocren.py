@@ -101,9 +101,20 @@ def main():
 
             # 前回のテストが正常だった場合のみ通知
             if save_data[test_site['name']] is True:
-                SendDiscord(f'**{test_site["name"]}** で ⚠**HTTP Error {response.status_code}**⚠ が発生しています。\n(URL: {test_site["url"]})')
+                error_message = f'**{test_site["name"]}** で ⚠**HTTP Error {response.status_code}**⚠ が発生しています。\n(URL: {test_site["url"]})'
 
-            print(f'{test_site["name"]}: ❌ HTTP Error {response.status_code} (HTTP Status {test_site["normal_status_code"]} was expected)')
+                # HTTP 30x の場合はリダイレクト先も通知
+                if 300 <= response.status_code < 400 and 'Location' in response.headers:
+                    error_message += f'\nRedirect to: {response.headers["Location"]}'
+
+                SendDiscord(error_message)
+
+            status_message = f'{test_site["name"]}: ❌ HTTP Error {response.status_code} (HTTP Status {test_site["normal_status_code"]} was expected)'
+            # HTTP 30x の場合はリダイレクト先も表示
+            if 300 <= response.status_code < 400 and 'Location' in response.headers:
+                status_message += f'\n  Redirect to: {response.headers["Location"]}'
+            print(status_message)
+
             save_data[test_site['name']] = False
             continue
 
