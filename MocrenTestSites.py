@@ -42,13 +42,7 @@ test_sites: list[TestSite] = [
         'normal_response_data': '<title>天気予報 API（livedoor 天気互換）</title>',
     },
     {
-        'name': '天気予報 API (livedoor 互換) - API (HTTP)',
-        'url': 'http://weather.tsukumijima.net/api/forecast/city/400040',
-        'normal_status_code': 200,
-        'normal_response_data': '"title": "福岡県 久留米 の天気",',
-    },
-    {
-        'name': '天気予報 API (livedoor 互換) - API (HTTPS)',
+        'name': '天気予報 API (livedoor 互換) - API',
         'url': 'https://weather.tsukumijima.net/api/forecast/city/400040',
         'normal_status_code': 200,
         'normal_response_data': '"title": "福岡県 久留米 の天気",',
